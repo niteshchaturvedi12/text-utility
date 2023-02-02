@@ -4,11 +4,11 @@ import Alert from './components/Alert';
 import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route
+// } from "react-router-dom";
 
 
 // let name = " Nitesh!"
@@ -47,15 +47,16 @@ function App() {
   }
   return (
     <>
-      <Router>
+      {/* <Router> */}
         <Navbar title='Text Utility' aboutText='About Text utility' mode={mode} toggleMode={toggleMode}/>
         <Alert alert={alert}/>
-        <Routes>
+        <TextForm heading="Enter your text to utilise!" mode={mode} showAlert={showAlert}/>
+        {/* <Routes>
           <Route exact path="/" element = {<TextForm heading="Enter your text to utilise!" mode={mode} showAlert={showAlert}/>}/>
           <Route exact path="/home" element={<TextForm heading="Enter your text to utilise!" mode={mode} showAlert={showAlert}/>}/>
           <Route path="/about" element={<About/>}/>
-        </Routes>
-      </Router>
+        </Routes> */}
+      {/* </Router> */}
     </>
   );
 }
