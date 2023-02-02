@@ -7,6 +7,20 @@
   pointer-events: none;
 }
 
+.green-dark-mode {
+  background-color: #012c01;
+  color: white;
+}
+
+.blue-dark-mode {
+  background-color: #02036f;
+  color: white;
+}
+
+.light-mode {
+  background-color: #c1c2f1;
+  color: #151111;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
