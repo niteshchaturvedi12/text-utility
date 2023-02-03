@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 export default function TextForm(props) {
     const [text, setText] =  useState('');
-    const [words, setWords] = useState(0)
     
     const convertUppercase = () => {
         setText(text.toUpperCase());
@@ -11,8 +10,6 @@ export default function TextForm(props) {
 
     const handleTextChange = (event) => {
         setText(event.target.value)
-        let wordCount = text.length > 0 ? text.split(' ').length : 0;
-        setWords(wordCount)
     }
 
     const convertLowercase = () => {
@@ -39,22 +36,22 @@ export default function TextForm(props) {
         <div className="container" style={{backgroundColor: props.mode === 'light' ? 'white' : '#436cba',
          color : props.mode === 'light' ? 'black' : 'white'}}>
             <h1>{props.heading}</h1>
-            <textarea  id="myText" className="form-control my-3" style={{backgroundColor: props.mode === 'light' ? 'white' : '#436cba',
+            <textarea  id="myText" className="form-control my-3" style={{backgroundColor: props.mode === 'light' ? 'white' : '#19418d',
                 color : props.mode === 'light' ? 'black' : 'white'}} value={text}
                 onChange={handleTextChange} rows="8"></textarea>
-            <button className="btn btn-primary" onClick={convertUppercase}>Convert To Uppercase</button>
-            <button className="btn btn-primary ml-2" onClick={convertLowercase}>Convert To Lowercase</button>
-            <button className="btn btn-primary ml-2" onClick={copyToClipBoard}>Copy To ClipBoard</button>
-            <button className="btn btn-primary ml-2" onClick={clearText}>Clear Text</button>
-            <button className="btn btn-primary ml-2" onClick={cleanExtraSpaces}>Clean extra spaces</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={convertUppercase}>Convert To Uppercase</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={convertLowercase}>Convert To Lowercase</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={copyToClipBoard}>Copy To ClipBoard</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={clearText}>Clear Text</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={cleanExtraSpaces}>Clean extra spaces</button>
         </div>
         <div className="container" style={{backgroundColor: props.mode === 'light' ? 'white' : '#436cba',
          color : props.mode === 'light' ? 'black' : 'white'}}>
             <h1>Your Text Summary</h1>
-            <p>your text contains {words} words and {text.length} characters!</p>
-            <p>{0.008*words} Minutes Read</p>
+            <p>your text contains {text.length > 0 ? text.split(' ').filter((element) => element.length > 0).length : 0} words and {text.length} characters!</p>
+            <p>{0.008*(text.length > 0 ? text.split(' ').filter((element) => element.length > 0).length : 0)} Minutes Read</p>
             <h2>Preview</h2>
-            <p>{text.length > 0 ? text : 'Enter some text in the textbox above to preview here!'}</p>
+            <p>{text.length > 0 ? text : 'Nothing to preview!'}</p>
         </div>
     </>
   )
